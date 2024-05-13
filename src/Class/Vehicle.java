@@ -1,8 +1,13 @@
 package Class;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public abstract class Vehicle {
     protected double gasoline;
     protected double speed;
+    public Random random = new Random();
+    public Scanner input = new Scanner(System.in);
 
     public float getGasoline() {
         if (gasoline < 0) {
