@@ -20,10 +20,10 @@ public class Main {
             System.out.println("Enter the number of vehicles: \n1. Truck\n2. Tank");
             vehicles = input.nextInt();
             if (vehicles == 1) {
-                LandVehicle truck = new Truck(100, 2);
+                LandVehicle truck = new Truck();
                 landVehicle.Go(truck);
             } else if (vehicles == 2) {
-                LandVehicle tank = new Tank(100, 3);
+                LandVehicle tank = new Tank();
                 landVehicle.Go(tank);
             } else {
                 System.out.println("Invalid Input");

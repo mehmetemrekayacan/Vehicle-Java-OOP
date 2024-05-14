@@ -1,10 +1,12 @@
 package Vehicles;
 import VehiclesClass.LandVehicle;
 public class Tank extends LandVehicle {
-    public Tank(double gasoline, int passengerCount) {
-        this.wheelCount = 24;
+    public Tank() {
+        this.gasoline = 1500;
         this.maxSpeed = 60;
         this.speedDeviation = 5;
         this.vehicleName = "Tank";
+        this.burningFuelConstant = 0.8;
+        this.burningFuelMobile = 1.2;
     }
 }
