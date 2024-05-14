@@ -6,6 +6,7 @@ import java.util.Scanner;
 public abstract class Vehicle {
     protected double gasoline;
     protected double speed;
+    protected int mobileSpeed;
     private int function;
     private int functionCounter = 0;
     private int yesNo;
@@ -61,12 +62,12 @@ public abstract class Vehicle {
             function = input.nextInt();
             Thread.sleep(500);
             if (function == 1) {
-                name.accelerate(10);
+                name.accelerate(mobileSpeed);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
 
             } else if (function == 2) {
-                name.decelerate(10);
+                name.decelerate(mobileSpeed);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
 

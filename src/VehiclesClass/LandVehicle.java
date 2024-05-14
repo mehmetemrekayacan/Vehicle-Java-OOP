@@ -45,5 +45,6 @@ public class LandVehicle extends Vehicle {
         }
         gasoline -= burningFuelConstant * speed;
     }
+    
 
 }

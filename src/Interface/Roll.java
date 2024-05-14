@@ -1,5 +1,7 @@
 package Interface;
 public interface Roll {
-    public void roll();
+    default void roll() {
+        System.out.println("Rolling...");
+    }
 
 }
