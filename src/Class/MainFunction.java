@@ -1,6 +1,9 @@
 package Class;
+
 import java.util.Random;
 import java.util.Scanner;
+
+import VehiclesClass.AirVehicle;
 
 public class MainFunction {
     private int function;
@@ -27,12 +30,12 @@ public class MainFunction {
                 name.accelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
-
+                ((AirVehicle) name).up();
             } else if (function == 2) {
                 name.decelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
-
+                ((AirVehicle) name).down();
             } else {
                 System.out.println("Invalid Input");
             }

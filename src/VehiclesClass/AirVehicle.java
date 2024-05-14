@@ -3,7 +3,7 @@ package VehiclesClass;
 import Class.Vehicle;
 import Interface.Roll;
 
-public class AirVehicle extends Vehicle implements Roll{
+public class AirVehicle extends Vehicle implements Roll {
     protected int maxSpeed;
     protected int speedDeviation;
     protected String vehicleName;
@@ -47,11 +47,47 @@ public class AirVehicle extends Vehicle implements Roll{
         gasoline -= burningFuelConstant * speed;
     }
 
-    @Override
-    public void roll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'roll'");
+    public void up() {
+
+        if (getSpeed() > 1000) {
+            System.out.println("You will die !");
+        } else if (getSpeed() > 900) {
+            System.out.println("Rolling at the speed of really really danger...");
+        } else if (getSpeed() > 800) {
+            System.out.println("Rolling at the speed of really danger...");
+        } else if (getSpeed() > 700) {
+            System.out.println("Rolling at the speed of danger...");
+        } else if (getSpeed() > 600) {
+            System.out.println("Rolling extremely fast...");
+        } else if (getSpeed() > 500) {
+            System.out.println("Rolling very fast...");
+        } else if (getSpeed() > 400) {
+            System.out.println("Rolling fast...");
+        } else if (getSpeed() > 340) {
+            System.out.println("You are higher than the sound speed.");
+            System.out.println("Rolling...");
+        }
+
     }
 
-    
+    public void down() {
+        if (getSpeed()>=300 && getSpeed() < 340) {
+            System.out.println("You are lower than the sound speed.");
+            System.out.println("No Rolling...");
+        } else if (getSpeed() < 400) {
+            System.out.println("Rolling slow...");
+        } else if (getSpeed() < 500) {
+            System.out.println("Rolling little slow...");
+        } else if (getSpeed() < 600) {
+            System.out.println("Rolling no slow...");
+        } else if (getSpeed() < 700) {
+            System.out.println("Rolling at the speed of danger...");
+        } else if (getSpeed() < 800) {
+            System.out.println("Rolling at the speed of really danger...");
+        } else if (getSpeed() < 900) {
+            System.out.println("Rolling at the speed of really really danger...");
+        } else if (getSpeed() < 1000) {
+            System.out.println("You will die !");
+        }
+    }
 }

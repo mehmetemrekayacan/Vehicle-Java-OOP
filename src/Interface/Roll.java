@@ -1,7 +1,7 @@
 package Interface;
+
 public interface Roll {
-    default void roll() {
-        System.out.println("Rolling...");
-    }
+    public void up();
+    public void down();
 
 }

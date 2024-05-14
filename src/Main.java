@@ -31,7 +31,7 @@ public class Main {
                 System.out.println("Invalid Input");
             }
         } else if (typeVehicle == 2) {
-            System.out.println("Enter the number of vehicles: \n1. Truck\n2. Tank");
+            System.out.println("Enter the number of vehicles: \n1. Plane");
             vehicles = input.nextInt();
             if (vehicles == 1) {
                 AirVehicle plane = new Plane();
@@ -40,7 +40,7 @@ public class Main {
                 System.out.println("Invalid Input");
             }
         } else if (typeVehicle == 3) {
-            System.out.println("Enter the number of vehicles: \n1. Truck\n2. Tank");
+            System.out.println("Enter the number of vehicles: \n1. Boat");
             vehicles = input.nextInt();
             if (vehicles == 1) {
                 WaterVehicle boat = new Boat();
