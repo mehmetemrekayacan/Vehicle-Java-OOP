@@ -1,8 +1,9 @@
 package VehiclesClass;
 
 import Class.Vehicle;
+import Interface.Roll;
 
-public class AirVehicle extends Vehicle{
+public class AirVehicle extends Vehicle implements Roll{
 
     @Override
     protected void accelerate(double increase) {
@@ -26,6 +27,12 @@ public class AirVehicle extends Vehicle{
     protected double generateRandomSpeed() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'generateRandomSpeed'");
+    }
+
+    @Override
+    public void roll() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'roll'");
     }
 
     
