@@ -34,6 +34,13 @@ public abstract class Vehicle {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
+    public int getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(int velocity) {
+        this.velocity = velocity;
+    }
 
     public Vehicle() {
         this.speed = 0;
@@ -47,7 +54,7 @@ public abstract class Vehicle {
         }
     }
 
-    public void Go(VehiclesClass.LandVehicle name) throws InterruptedException {
+    public void Go(Vehicle name,int pace) throws InterruptedException {
         System.out.println("Star engine for enter 1\nLeave vehicle for 2:");
         function = input.nextInt();
         if (function == 2) {
@@ -62,12 +69,12 @@ public abstract class Vehicle {
             function = input.nextInt();
             Thread.sleep(500);
             if (function == 1) {
-                name.accelerate(velocity);
+                name.accelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
 
             } else if (function == 2) {
-                name.decelerate(velocity);
+                name.decelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
 
