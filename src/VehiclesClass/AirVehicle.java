@@ -4,29 +4,47 @@ import Class.Vehicle;
 import Interface.Roll;
 
 public class AirVehicle extends Vehicle implements Roll{
+    protected int maxSpeed;
+    protected int speedDeviation;
+    protected String vehicleName;
+    protected double burningFuelConstant;
+    protected double burningFuelMobile;
 
     @Override
-    protected void accelerate(double increase) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'accelerate'");
+    public void accelerate(double increase) {
+        super.endGasoline(increase);
+        if ((maxSpeed - speedDeviation) <= speed && speed <= (maxSpeed + speedDeviation)) {
+            double newSpeed = generateRandomSpeed();
+            gasoline -= burningFuelMobile * Math.abs(speed - newSpeed);
+            this.speed = newSpeed;
+        } else {
+            speed += increase;
+            gasoline -= burningFuelMobile * increase;
+        }
+        gasoline -= burningFuelConstant * speed;
     }
 
     @Override
-    protected void start() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'start'");
+    public double generateRandomSpeed() {
+        return random.nextInt((int) ((maxSpeed + speedDeviation) - (maxSpeed - speedDeviation)))
+                + (maxSpeed - speedDeviation);
     }
 
     @Override
-    protected void decelerate(double decrease) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'decelerate'");
+    public void start() {
+        System.out.println(vehicleName + " started.");
     }
 
     @Override
-    protected double generateRandomSpeed() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateRandomSpeed'");
+    public void decelerate(double decrease) {
+        super.endGasoline(decrease);
+        if (speed - decrease < 0) {
+            System.out.println("Vehicle stopped.");
+            System.exit(0);
+        } else {
+            speed -= decrease;
+        }
+        gasoline -= burningFuelConstant * speed;
     }
 
     @Override
