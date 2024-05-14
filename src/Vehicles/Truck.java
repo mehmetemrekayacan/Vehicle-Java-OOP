@@ -8,6 +8,6 @@ public class Truck extends LandVehicle {
         this.vehicleName = "Truck";
         this.burningFuelConstant = 0.2;
         this.burningFuelMobile = 0.4;
-        this.mobileSpeed=15;
+        this.velocity=15;
     }
 }

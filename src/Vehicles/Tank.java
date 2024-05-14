@@ -8,6 +8,6 @@ public class Tank extends LandVehicle {
         this.vehicleName = "Tank";
         this.burningFuelConstant = 0.8;
         this.burningFuelMobile = 1.2;
-        this.mobileSpeed=10;
+        this.velocity=10;
     }
 }
