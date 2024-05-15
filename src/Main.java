@@ -5,6 +5,7 @@ import Vehicles.Tank;
 import Vehicles.Truck;
 import Vehicles.Jet;
 import Vehicles.Boat;
+import Vehicles.Helicopter;
 import VehiclesClass.LandVehicle;
 import VehiclesClass.AirVehicle;
 import VehiclesClass.WaterVehicle;
@@ -31,11 +32,14 @@ public class Main {
                 System.out.println("Invalid Input");
             }
         } else if (typeVehicle == 2) {
-            System.out.println("Enter the number of vehicles: \n1. Jet");
+            System.out.println("Enter the number of vehicles: \n1. Jet\n2. Helicopter");
             vehicles = input.nextInt();
             if (vehicles == 1) {
                 AirVehicle jet = new Jet();
                 mainFunction.Go(jet,jet.getVelocity());
+            }else if(vehicles == 2){
+                AirVehicle helicopter = new Helicopter();
+                mainFunction.Go(helicopter,helicopter.getVelocity());
             }else {
                 System.out.println("Invalid Input");
             }
