@@ -3,22 +3,22 @@ package VehiclesClass;
 import Class.MainFunction;
 import Class.Vehicle;
 
-public class WaterVehicle extends Vehicle{
-
+public abstract class WaterVehicle extends Vehicle {
     protected int maxSpeed;
-    protected int speedDeviation;
+    protected int speedVariation;
     protected String vehicleName;
     protected double burningFuelConstant;
     protected double burningFuelMobile;
 
     public WaterVehicle() {
+        super();
         MainFunction.count++;
     }
 
     @Override
     public void accelerate(double increase) {
         super.endGasoline(increase);
-        if ((maxSpeed - speedDeviation) <= speed && speed <= (maxSpeed + speedDeviation)) {
+        if ((maxSpeed - speedVariation) <= speed && speed <= (maxSpeed + speedVariation)) {
             double newSpeed = generateRandomSpeed();
             gasoline -= burningFuelMobile * Math.abs(speed - newSpeed);
             this.speed = newSpeed;
@@ -29,11 +29,7 @@ public class WaterVehicle extends Vehicle{
         gasoline -= burningFuelConstant * speed;
     }
 
-    @Override
-    public double generateRandomSpeed() {
-        return random.nextInt((int) ((maxSpeed + speedDeviation) - (maxSpeed - speedDeviation)))
-                + (maxSpeed - speedDeviation);
-    }
+    public abstract double generateRandomSpeed();
 
     @Override
     public void start() {
@@ -51,5 +47,4 @@ public class WaterVehicle extends Vehicle{
         }
         gasoline -= burningFuelConstant * speed;
     }
-    
 }

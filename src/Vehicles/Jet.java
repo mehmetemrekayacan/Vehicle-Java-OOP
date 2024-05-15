@@ -9,7 +9,7 @@ public class Jet extends AirVehicle implements Roll {
         MainFunction.count++;
         this.gasoline = 3200;
         this.maxSpeed = 700;
-        this.speedDeviation = 50;
+        this.speedVariation = 50;
         this.vehicleName = "Jet";
         this.burningFuelConstant = 0.1;
         this.burningFuelMobile = 0.2;
@@ -52,6 +52,13 @@ public class Jet extends AirVehicle implements Roll {
         } else {
             System.out.println("Rolling at the speed of really really danger...");
         }
+    }
+
+    @Override
+    public double generateRandomSpeed() {
+        int minSpeed = maxSpeed - speedVariation;
+        int maXSpeed = maxSpeed + speedVariation;
+        return minSpeed + Math.random() * (maXSpeed - minSpeed);
     }
 
 }

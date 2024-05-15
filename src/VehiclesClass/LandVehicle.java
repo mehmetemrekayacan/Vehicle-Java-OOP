@@ -1,23 +1,27 @@
 package VehiclesClass;
 
+import java.util.Random;
+
 import Class.MainFunction;
 import Class.Vehicle;
 
-public class LandVehicle extends Vehicle {
+public abstract class LandVehicle extends Vehicle {
     protected int maxSpeed;
-    protected int speedDeviation;
+    protected int speedVariation;
     protected String vehicleName;
     protected double burningFuelConstant;
     protected double burningFuelMobile;
+    protected Random random = new Random();
 
     public LandVehicle() {
-        MainFunction.count++;
+        super();
+        MainFunction.count++;   
     }
 
     @Override
     public void accelerate(double increase) {
         super.endGasoline(increase);
-        if ((maxSpeed - speedDeviation) <= speed && speed <= (maxSpeed + speedDeviation)) {
+        if ((maxSpeed - speedVariation) <= speed && speed <= (maxSpeed + speedVariation)) {
             double newSpeed = generateRandomSpeed();
             gasoline -= burningFuelMobile * Math.abs(speed - newSpeed);
             this.speed = newSpeed;
@@ -26,17 +30,6 @@ public class LandVehicle extends Vehicle {
             gasoline -= burningFuelMobile * increase;
         }
         gasoline -= burningFuelConstant * speed;
-    }
-
-    @Override
-    public double generateRandomSpeed() {
-        return random.nextInt((int) ((maxSpeed + speedDeviation) - (maxSpeed - speedDeviation)))
-                + (maxSpeed - speedDeviation);
-    }
-
-    @Override
-    public void start() {
-        System.out.println(vehicleName + " started.");
     }
 
     @Override
@@ -50,6 +43,11 @@ public class LandVehicle extends Vehicle {
         }
         gasoline -= burningFuelConstant * speed;
     }
-    
 
+    public abstract double generateRandomSpeed();
+
+    @Override
+    public void start() {
+        System.out.println(vehicleName + " started.");
+    }
 }

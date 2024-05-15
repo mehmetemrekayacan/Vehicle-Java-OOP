@@ -1,23 +1,20 @@
 package Class;
 
-import java.util.Random;
-
 public abstract class Vehicle {
     protected double gasoline;
     protected double speed;
     protected int velocity;
-    public Random random = new Random();
-    
+
     public Vehicle() {
         MainFunction.count++;
         this.speed = 0;
     }
 
-    public float getGasoline() {
+    public double getGasoline() {
         if (gasoline < 0) {
             return 0;
         }
-        return (float) gasoline;
+        return gasoline;
     }
 
     public void setGasoline(double gasoline) {
@@ -34,20 +31,13 @@ public abstract class Vehicle {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
+
     public int getVelocity() {
         return velocity;
     }
 
     public void setVelocity(int velocity) {
         this.velocity = velocity;
-    }
-
-    public void endGasoline(double goZero) {
-        if (gasoline <= 0) {
-            speed -= goZero;
-            System.out.println("Out of gasoline.");
-            System.exit(0);
-        }
     }
 
     protected abstract void accelerate(double increase);
@@ -57,4 +47,12 @@ public abstract class Vehicle {
     protected abstract void decelerate(double decrease);
 
     protected abstract double generateRandomSpeed();
+
+    protected void endGasoline(double goZero) {
+        if (gasoline <= 0) {
+            speed -= goZero;
+            System.out.println("Out of gasoline.");
+            System.exit(0);
+        }
+    }
 }
