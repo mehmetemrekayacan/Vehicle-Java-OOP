@@ -3,7 +3,7 @@ import java.util.Scanner;
 import Class.MainFunction;
 import Vehicles.Tank;
 import Vehicles.Truck;
-import Vehicles.Plane;
+import Vehicles.Jet;
 import Vehicles.Boat;
 import VehiclesClass.LandVehicle;
 import VehiclesClass.AirVehicle;
@@ -31,11 +31,11 @@ public class Main {
                 System.out.println("Invalid Input");
             }
         } else if (typeVehicle == 2) {
-            System.out.println("Enter the number of vehicles: \n1. Plane");
+            System.out.println("Enter the number of vehicles: \n1. Jet");
             vehicles = input.nextInt();
             if (vehicles == 1) {
-                AirVehicle plane = new Plane();
-                mainFunction.Go(plane,plane.getVelocity());
+                AirVehicle jet = new Jet();
+                mainFunction.Go(jet,jet.getVelocity());
             }else {
                 System.out.println("Invalid Input");
             }

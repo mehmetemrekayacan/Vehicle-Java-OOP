@@ -3,6 +3,7 @@ package Class;
 import java.util.Random;
 import java.util.Scanner;
 
+import Vehicles.Jet;
 import VehiclesClass.AirVehicle;
 
 public class MainFunction {
@@ -31,14 +32,14 @@ public class MainFunction {
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
                 if(name instanceof AirVehicle){
-                    ((AirVehicle) name).up();
+                    ((Jet) name).up();
                 }
             } else if (function == 2) {
                 name.decelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
                 if(name instanceof AirVehicle){
-                    ((AirVehicle) name).down();
+                    ((Jet) name).down();
                 }
             } else {
                 System.out.println("Invalid Input");
