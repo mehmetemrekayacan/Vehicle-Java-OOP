@@ -6,24 +6,25 @@ import java.util.Scanner;
 import Vehicles.Jet;
 
 public class MainFunction {
-    private int function;
-    private int functionCounter = 0;
-    private int yesNo;
-    public Random random = new Random();
-    public Scanner input = new Scanner(System.in);
+    private static int function;
+    private static int functionCounter = 0;
+    private static int yesNo;
+    public static Random random = new Random();
+    public static Scanner input = new Scanner(System.in);
     public static int count;
 
     public MainFunction() {
         count++;
     }
 
-    public void Go(Vehicle name, int pace) throws InterruptedException {
+    public static void Go(Vehicle name, int pace) throws InterruptedException {
         System.out.println("Star engine for enter 1\nLeave vehicle for 2:");
         function = input.nextInt();
         if (function == 2) {
             System.out.println("Leaving vehicle...");
             Thread.sleep(1000);
             System.out.println("Left vehicle");
+            System.out.println("Number of active classes used in this process: " + count);
             System.exit(0);
         }
         name.start();
@@ -35,14 +36,14 @@ public class MainFunction {
                 name.accelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
-                if(name instanceof Jet jet){
+                if (name instanceof Jet jet) {
                     jet.up();
                 }
             } else if (function == 2) {
                 name.decelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
-                if(name instanceof Jet jet){
+                if (name instanceof Jet jet) {
                     jet.down();
                 }
             } else {
@@ -60,6 +61,7 @@ public class MainFunction {
                     System.out.println("Exiting...");
                     Thread.sleep(1000);
                     System.out.println("Exited");
+                    System.out.println("Number of active classes used in this process: " + count);
                     System.exit(0);
                 } else {
                     System.out.println("Continuing...");
