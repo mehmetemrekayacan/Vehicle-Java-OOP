@@ -31,15 +31,15 @@ public class MainFunction {
                 name.accelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
-                if(name instanceof Jet){
-                    ((Jet) name).up();
+                if(name instanceof Jet jet){
+                    jet.up();
                 }
             } else if (function == 2) {
                 name.decelerate(pace);
                 System.out.println("Speed: " + name.getSpeed() + " km/h");
                 System.out.println("Gasoline: " + name.getGasoline() + " liters");
-                if(name instanceof Jet){
-                    ((Jet) name).down();
+                if(name instanceof Jet jet){
+                    jet.down();
                 }
             } else {
                 System.out.println("Invalid Input");
