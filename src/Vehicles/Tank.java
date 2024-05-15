@@ -1,7 +1,9 @@
 package Vehicles;
+import Class.MainFunction;
 import VehiclesClass.LandVehicle;
 public class Tank extends LandVehicle {
     public Tank() {
+        MainFunction.count++;
         this.gasoline = 1500;
         this.maxSpeed = 60;
         this.speedDeviation = 5;

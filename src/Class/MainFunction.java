@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Vehicles.Jet;
-import VehiclesClass.AirVehicle;
 
 public class MainFunction {
     private int function;
@@ -12,6 +11,11 @@ public class MainFunction {
     private int yesNo;
     public Random random = new Random();
     public Scanner input = new Scanner(System.in);
+    public static int count;
+
+    public MainFunction() {
+        count++;
+    }
 
     public void Go(Vehicle name, int pace) throws InterruptedException {
         System.out.println("Star engine for enter 1\nLeave vehicle for 2:");

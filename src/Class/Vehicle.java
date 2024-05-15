@@ -8,6 +8,10 @@ public abstract class Vehicle {
     protected int velocity;
     public Random random = new Random();
     
+    public Vehicle() {
+        MainFunction.count++;
+        this.speed = 0;
+    }
 
     public float getGasoline() {
         if (gasoline < 0) {
@@ -36,10 +40,6 @@ public abstract class Vehicle {
 
     public void setVelocity(int velocity) {
         this.velocity = velocity;
-    }
-
-    public Vehicle() {
-        this.speed = 0;
     }
 
     public void endGasoline(double goZero) {

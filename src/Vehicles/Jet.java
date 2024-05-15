@@ -1,10 +1,12 @@
 package Vehicles;
 
+import Class.MainFunction;
 import Interface.Roll;
 import VehiclesClass.AirVehicle;
 
 public class Jet extends AirVehicle implements Roll {
     public Jet() {
+        MainFunction.count++;
         this.gasoline = 3200;
         this.maxSpeed = 700;
         this.speedDeviation = 50;

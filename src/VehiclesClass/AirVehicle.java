@@ -1,5 +1,6 @@
 package VehiclesClass;
 
+import Class.MainFunction;
 import Class.Vehicle;
 
 public class AirVehicle extends Vehicle{
@@ -8,6 +9,10 @@ public class AirVehicle extends Vehicle{
     protected String vehicleName;
     protected double burningFuelConstant;
     protected double burningFuelMobile;
+
+    public AirVehicle() {
+        MainFunction.count++;
+    }
 
     @Override
     public void accelerate(double increase) {

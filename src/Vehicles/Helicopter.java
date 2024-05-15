@@ -1,9 +1,11 @@
 package Vehicles;
 
+import Class.MainFunction;
 import VehiclesClass.AirVehicle;
 
 public class Helicopter extends AirVehicle{
     public Helicopter() {
+        MainFunction.count++;
         this.gasoline = 2000;
         this.maxSpeed = 300;
         this.speedDeviation = 25;

@@ -11,9 +11,9 @@ import VehiclesClass.AirVehicle;
 import VehiclesClass.WaterVehicle;
 
 public class Main {
-    static int vehicles;
-    static int typeVehicle;
-    static Scanner input = new Scanner(System.in);
+    public static int vehicles;
+    public static int typeVehicle;
+    public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
         MainFunction mainFunction = new MainFunction();
