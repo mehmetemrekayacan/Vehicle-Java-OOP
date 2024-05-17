@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 import Class.MainFunction;
-
+import Class.VehicleType;
 import Vehicles.Tank;
 import Vehicles.Truck;
 import Vehicles.Jet;
@@ -21,16 +21,20 @@ public class Main {
             System.out.println("What type of vehicle do you want to use?");
             System.out.println("1. Land Vehicle\n2. Air Vehicle\n3. Water Vehicle");
             int vehicleType = input.nextInt();
+            VehicleType selectedType = null;
 
             switch (vehicleType) {
                 case 1:
-                    startLandVehicleJourney(mainFunction);
+                    selectedType = VehicleType.LAND_VEHICLE;
+                    startJourney(selectedType, mainFunction);
                     break;
                 case 2:
-                    startAirVehicleJourney(mainFunction);
+                    selectedType = VehicleType.AIR_VEHICLE;
+                    startJourney(selectedType, mainFunction);
                     break;
                 case 3:
-                    startWaterVehicleJourney(mainFunction);
+                    selectedType = VehicleType.WATER_VEHICLE;
+                    startJourney(selectedType, mainFunction);
                     break;
                 default:
                     System.out.println("Invalid input. Please select a valid option.");
@@ -44,48 +48,56 @@ public class Main {
         }
     }
 
-    private static void startLandVehicleJourney(MainFunction mainFunction) throws InterruptedException {
-        System.out.println("Which land vehicle do you want to use?");
-        System.out.println("1. Truck\n2. Tank");
-        int landVehicleType = input.nextInt();
+    private static void startJourney(VehicleType vehicleType, MainFunction mainFunction) throws InterruptedException {
+        switch (vehicleType) {
+            case LAND_VEHICLE:
+                System.out.println("Which land vehicle do you want to use?");
+                System.out.println("1. Truck\n2. Tank");
+                int landVehicleType = input.nextInt();
 
-        if (landVehicleType == 1) {
-            LandVehicle truck = new Truck();
-            mainFunction.startJourney(truck, truck.getVelocity());
-        } else if (landVehicleType == 2) {
-            LandVehicle tank = new Tank();
-            mainFunction.startJourney(tank, tank.getVelocity());
-        } else {
-            System.out.println("Invalid input. Please select a valid option.");
-        }
-    }
+                if (landVehicleType == 1) {
+                    LandVehicle truck = new Truck();
+                    mainFunction.startJourney(truck, truck.getVelocity());
+                } else if (landVehicleType == 2) {
+                    LandVehicle tank = new Tank();
+                    mainFunction.startJourney(tank, tank.getVelocity());
+                } else {
+                    System.out.println("Invalid input. Please select a valid option.");
+                }
+                break;
 
-    private static void startAirVehicleJourney(MainFunction mainFunction) throws InterruptedException {
-        System.out.println("Which air vehicle do you want to use?");
-        System.out.println("1. Jet\n2. Helicopter");
-        int airVehicleType = input.nextInt();
+            case AIR_VEHICLE:
+                System.out.println("Which air vehicle do you want to use?");
+                System.out.println("1. Jet\n2. Helicopter");
+                int airVehicleType = input.nextInt();
 
-        if (airVehicleType == 1) {
-            AirVehicle jet = new Jet();
-            mainFunction.startJourney(jet, jet.getVelocity());
-        } else if (airVehicleType == 2) {
-            AirVehicle helicopter = new Helicopter();
-            mainFunction.startJourney(helicopter, helicopter.getVelocity());
-        } else {
-            System.out.println("Invalid input. Please select a valid option.");
-        }
-    }
+                if (airVehicleType == 1) {
+                    AirVehicle jet = new Jet();
+                    mainFunction.startJourney(jet, jet.getVelocity());
+                } else if (airVehicleType == 2) {
+                    AirVehicle helicopter = new Helicopter();
+                    mainFunction.startJourney(helicopter, helicopter.getVelocity());
+                } else {
+                    System.out.println("Invalid input. Please select a valid option.");
+                }
+                break;
 
-    private static void startWaterVehicleJourney(MainFunction mainFunction) throws InterruptedException {
-        System.out.println("Which water vehicle do you want to use?");
-        System.out.println("1. Boat");
-        int waterVehicleType = input.nextInt();
+            case WATER_VEHICLE:
+                System.out.println("Which water vehicle do you want to use?");
+                System.out.println("1. Boat");
+                int waterVehicleType = input.nextInt();
 
-        if (waterVehicleType == 1) {
-            WaterVehicle boat = new Boat();
-            mainFunction.startJourney(boat, boat.getVelocity());
-        } else {
-            System.out.println("Invalid input. Please select a valid option.");
+                if (waterVehicleType == 1) {
+                    WaterVehicle boat = new Boat();
+                    mainFunction.startJourney(boat, boat.getVelocity());
+                } else {
+                    System.out.println("Invalid input. Please select a valid option.");
+                }
+                break;
+
+            default:
+                System.out.println("Invalid input. Please select a valid option.");
+                break;
         }
     }
 }
