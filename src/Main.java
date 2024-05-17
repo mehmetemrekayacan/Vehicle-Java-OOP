@@ -18,26 +18,37 @@ public class Main {
         MainFunction mainFunction = new MainFunction();
 
         try {
-            System.out.println("What type of vehicle do you want to use?");
-            System.out.println("1. Land Vehicle\n2. Air Vehicle\n3. Water Vehicle");
-            int vehicleType = input.nextInt();
-            VehicleType selectedType = null;
+            boolean validInput = false;
+            int vehicleType = 0;
+            do {
+                System.out.println("What type of vehicle do you want to use?");
+                System.out.println("1. Land Vehicle\n2. Air Vehicle\n3. Water Vehicle");
+
+                if (input.hasNextInt()) {
+                    vehicleType = input.nextInt();
+                    if (vehicleType >= 1 && vehicleType <= 3) {
+                        validInput = true;
+                    } else {
+                        System.out.println("Invalid input. Please select a valid option (1-3).");
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter a number.");
+                    input.next();
+                }
+            } while (!validInput);
 
             switch (vehicleType) {
                 case 1:
-                    selectedType = VehicleType.LAND_VEHICLE;
-                    startJourney(selectedType, mainFunction);
+                    startJourney(VehicleType.LAND_VEHICLE, mainFunction);
                     break;
                 case 2:
-                    selectedType = VehicleType.AIR_VEHICLE;
-                    startJourney(selectedType, mainFunction);
+                    startJourney(VehicleType.AIR_VEHICLE, mainFunction);
                     break;
                 case 3:
-                    selectedType = VehicleType.WATER_VEHICLE;
-                    startJourney(selectedType, mainFunction);
+                    startJourney(VehicleType.WATER_VEHICLE, mainFunction);
                     break;
                 default:
-                    System.out.println("Invalid input. Please select a valid option.");
+                    System.out.println("Unexpected error occurred.");
                     break;
             }
         } catch (Exception e) {
@@ -49,50 +60,84 @@ public class Main {
     }
 
     private static void startJourney(VehicleType vehicleType, MainFunction mainFunction) throws InterruptedException {
+        boolean validInput = false;
+        int vehicleSubType = 0;
+
         switch (vehicleType) {
             case LAND_VEHICLE:
-                System.out.println("Which land vehicle do you want to use?");
-                System.out.println("1. Truck\n2. Tank");
-                int landVehicleType = input.nextInt();
+                do {
+                    System.out.println("Which land vehicle do you want to use?");
+                    System.out.println("1. Truck\n2. Tank");
 
-                if (landVehicleType == 1) {
+                    if (input.hasNextInt()) {
+                        vehicleSubType = input.nextInt();
+                        if (vehicleSubType == 1 || vehicleSubType == 2) {
+                            validInput = true;
+                        } else {
+                            System.out.println("Invalid input. Please select a valid option (1-2).");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a number.");
+                        input.next();
+                    }
+                } while (!validInput);
+
+                if (vehicleSubType == 1) {
                     LandVehicle truck = new Truck();
                     mainFunction.startJourney(truck, truck.getVelocity());
-                } else if (landVehicleType == 2) {
+                } else {
                     LandVehicle tank = new Tank();
                     mainFunction.startJourney(tank, tank.getVelocity());
-                } else {
-                    System.out.println("Invalid input. Please select a valid option.");
                 }
                 break;
 
             case AIR_VEHICLE:
-                System.out.println("Which air vehicle do you want to use?");
-                System.out.println("1. Jet\n2. Helicopter");
-                int airVehicleType = input.nextInt();
+                do {
+                    System.out.println("Which air vehicle do you want to use?");
+                    System.out.println("1. Jet\n2. Helicopter");
 
-                if (airVehicleType == 1) {
+                    if (input.hasNextInt()) {
+                        vehicleSubType = input.nextInt();
+                        if (vehicleSubType == 1 || vehicleSubType == 2) {
+                            validInput = true;
+                        } else {
+                            System.out.println("Invalid input. Please select a valid option (1-2).");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a number.");
+                        input.next();
+                    }
+                } while (!validInput);
+
+                if (vehicleSubType == 1) {
                     AirVehicle jet = new Jet();
                     mainFunction.startJourney(jet, jet.getVelocity());
-                } else if (airVehicleType == 2) {
+                } else {
                     AirVehicle helicopter = new Helicopter();
                     mainFunction.startJourney(helicopter, helicopter.getVelocity());
-                } else {
-                    System.out.println("Invalid input. Please select a valid option.");
                 }
                 break;
 
             case WATER_VEHICLE:
-                System.out.println("Which water vehicle do you want to use?");
-                System.out.println("1. Boat");
-                int waterVehicleType = input.nextInt();
+                do {
+                    System.out.println("Which water vehicle do you want to use?");
+                    System.out.println("1. Boat");
 
-                if (waterVehicleType == 1) {
-                    WaterVehicle boat = new Boat();
-                    mainFunction.startJourney(boat, boat.getVelocity());
-                } else {
-                    System.out.println("Invalid input. Please select a valid option.");
-                }
+                    if (input.hasNextInt()) {
+                        vehicleSubType = input.nextInt();
+                        if (vehicleSubType == 1) {
+                            validInput = true;
+                        } else {
+                            System.out.println("Invalid input. Please select a valid option (1).");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a number.");
+                        input.next();
+                    }
+                } while (!validInput);
+
+                WaterVehicle boat = new Boat();
+                mainFunction.startJourney(boat, boat.getVelocity());
                 break;
 
             default:

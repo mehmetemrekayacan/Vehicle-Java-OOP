@@ -15,8 +15,23 @@ public class MainFunction {
 
     public void startJourney(Vehicle vehicle, int pace) {
         try {
-            System.out.println("Start engine (1) or leave vehicle (2):");
-            int function = input.nextInt();
+            int function = 0;
+            boolean validInput = false;
+
+            do {
+                System.out.println("Start engine (1) or leave vehicle (2):");
+                if (input.hasNextInt()) {
+                    function = input.nextInt();
+                    if (function == 1 || function == 2) {
+                        validInput = true;
+                    } else {
+                        System.out.println("Invalid input. Please select a valid option (1-2).");
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter a number.");
+                    input.next();
+                }
+            } while (!validInput);
 
             if (function == 2) {
                 System.out.println("Leaving vehicle...");
@@ -29,8 +44,22 @@ public class MainFunction {
             vehicle.start();
 
             while (true) {
-                System.out.println("Enter the function: \n1. Accelerate\n2. Decelerate:");
-                function = input.nextInt();
+                validInput = false;
+                do {
+                    System.out.println("Enter the function: \n1. Accelerate\n2. Decelerate:");
+                    if (input.hasNextInt()) {
+                        function = input.nextInt();
+                        if (function == 1 || function == 2) {
+                            validInput = true;
+                        } else {
+                            System.out.println("Invalid input. Please select a valid option (1-2).");
+                        }
+                    } else {
+                        System.out.println("Invalid input. Please enter a number.");
+                        input.next();
+                    }
+                } while (!validInput);
+
                 Thread.sleep(500);
 
                 switch (function) {
@@ -82,8 +111,24 @@ public class MainFunction {
     }
 
     private boolean askToExit() {
-        System.out.println("You've been in the car for too long. Do you want to exit? (1: Yes, 2: No)");
-        int yesNo = input.nextInt();
+        boolean validInput = false;
+        int yesNo = 0;
+
+        do {
+            System.out.println("You've been in the car for too long. Do you want to exit? (1: Yes, 2: No)");
+            if (input.hasNextInt()) {
+                yesNo = input.nextInt();
+                if (yesNo == 1 || yesNo == 2) {
+                    validInput = true;
+                } else {
+                    System.out.println("Invalid input. Please select a valid option (1-2).");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                input.next();
+            }
+        } while (!validInput);
+
         return yesNo == 1;
     }
 
